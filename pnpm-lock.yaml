@@ -302,7 +302,7 @@ importers:
 
   packages/example:
     dependencies:
-      '@jkomyno/common-utils':
+      '@samambaia/common-utils':
         specifier: workspace:*
         version: link:../common-utils
 

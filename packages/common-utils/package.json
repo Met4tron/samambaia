@@ -1,6 +1,6 @@
 {
   "private": false,
-  "name": "@jkomyno/common-utils",
+  "name": "@samambaia/common-utils",
   "version": "0.1.0",
   "description": "Demo library that contains common utility functions",
   "repository": {
@@ -29,13 +29,13 @@
   "exports": {
     ".": {
       "import": {
-        "@jkomyno/source": "./src/index.ts",
+        "@samambaia/source": "./src/index.ts",
         "types": "./build/index.d.mts",
         "import": "./build/index.mjs",
         "default": "./build/index.mjs"
       },
       "require": {
-        "@jkomyno/source": "./src/index.ts",
+        "@samambaia/source": "./src/index.ts",
         "types": "./build/index.d.ts",
         "import": "./build/index.js",
         "default": "./build/index.js"

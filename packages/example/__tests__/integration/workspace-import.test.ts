@@ -1,4 +1,4 @@
-import { sum } from '@jkomyno/common-utils'
+import { sum } from '@samambaia/common-utils'
 
 describe('workspace package boundary', () => {
   it('resolves the dependency through its public entrypoint', () => {

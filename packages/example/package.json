@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "@jkomyno/example",
+  "name": "@samambaia/example",
   "version": "0.1.0",
   "description": "Demo example that imports a local package",
   "author": {
@@ -16,6 +16,6 @@
     "test:integration": "vitest run --project integration --passWithNoTests"
   },
   "dependencies": {
-    "@jkomyno/common-utils": "workspace:*"
+    "@samambaia/common-utils": "workspace:*"
   }
 }

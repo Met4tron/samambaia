@@ -24,7 +24,7 @@ export const baseTestConfig = {
  * this once at the root or explicitly on each project definition.
  */
 export const baseResolveConfig = {
-  conditions: ['@jkomyno/source', ...defaultServerConditions],
+  conditions: ['@samambaia/source', ...defaultServerConditions],
 } as const
 
 /**

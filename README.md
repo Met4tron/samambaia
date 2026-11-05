@@ -10,7 +10,6 @@ The development toolchain is pinned in [`.mise.toml`](./.mise.toml), with tool a
 
 ## Table of Contents
 
-- [Getting Started](#getting-started)
 - [What's Included](#whats-included)
 - [Available Scripts](#available-scripts)
 - [Publishing (OIDC)](#publishing-oidc)
@@ -20,71 +19,13 @@ The development toolchain is pinned in [`.mise.toml`](./.mise.toml), with tool a
 - [Show your support](#-show-your-support)
 - [License](#-license)
 
-## Getting Started
-
-Use this repository as a template when you want a fresh `TypeScript` monorepo with `pnpm`, `turborepo`, `vitest`, `oxfmt`, `oxlint`, Changesets, and GitHub Actions already wired together.
-
-There are two common ways to create your own repository from it.
-
-### Create a Repository from GitHub
-
-1. Open [`jkomyno/pnpm-monorepo-template`](https://github.com/jkomyno/pnpm-monorepo-template).
-2. Click **Use this template**.
-3. Choose **Create a new repository**.
-4. Pick the owner, repository name, visibility, and whether you want to include all branches.
-5. Click **Create repository**.
-6. Clone your new repository:
-
-```bash
-git clone git@github.com:<your-github-user-or-org>/<your-new-repo>.git
-cd <your-new-repo>
-```
-
-### Create a Repository with `gh`
-
-If you prefer the GitHub CLI, create and clone the new repository in one command:
-
-```bash
-gh repo create <your-github-user-or-org>/<your-new-repo> \
-  --template jkomyno/pnpm-monorepo-template \
-  --private \
-  --clone
-
-cd <your-new-repo>
-```
-
-Use `--public` instead of `--private` if the repository should be public.
-
-### Set Up the Project Locally
-
-This template pins Node.js and pnpm in [`.mise.toml`](./.mise.toml). Install [mise](https://mise.jdx.dev/getting-started.html), then let it provision the repository toolchain:
-
-```bash
-mise trust
-mise install
-pnpm install
-pnpm build
-pnpm test
-```
-
-Use mise as the source of truth when changing tool versions, and run `mise lock` after an update to refresh the locked tool artifacts. The `packageManager` field in [`package.json`](./package.json) mirrors the pnpm pin for compatibility with package-manager-aware tooling.
-
-After that, make the template yours:
-
-1. Replace the `@jkomyno/*` package scope in the local `package.json` files with your own npm scope.
-2. Update the `name`, `description`, `repository`, `author`, and package visibility fields in the root and package-level `package.json` files.
-3. Update README badges, author details, trusted-publisher examples, and links so they point to your new GitHub repository.
-4. Remove, rename, or replace the example packages in [`packages/`](packages/) once you know what your monorepo should contain.
-
-At this point the repository is ready for normal development. Use `pnpm build`, `pnpm test`, `pnpm lint:ci`, and `pnpm changeset` as the main day-to-day commands.
-
 ## What's Included
 
-- `pnpm` workspace, whose configuration is stored in [`pnpm-workspace.yaml`](./pnpm-workspace.yaml). Two example packages are included, [`common-utils`](packages/common-utils) and [`example`](packages/example), with the latter importing `common-utils` as a dependency. All local packages are decorated with a `@jkomyno/*` scope (you may want to substitute these instances in the `name` entries of any `package.json` with yours or your company's name).
+- `pnpm` workspace, whose configuration is stored in [`pnpm-workspace.yaml`](./pnpm-workspace.yaml). Two example packages are included, [`common-utils`](packages/common-utils) and [`example`](packages/example), with the latter importing `common-utils` as a dependency. All local packages use the `@samambaia/*` scope.
 - `tsdown` bundler, whose configuration is stored in [`tsdown.config.base.ts`](./tsdown.config.base.ts).
 - `turborepo`, whose configuration is stored in [`turbo.json`](./turbo.json)
 - centralized dependency versions through the `pnpm` catalog in [`pnpm-workspace.yaml`](./pnpm-workspace.yaml), plus install hardening with release-age gating and targeted transitive dependency overrides.
-- the `vitest` test engine, whose shared configuration is stored in [`vitest.config.base.ts`](./vitest.config.base.ts). Workspace imports in tests resolve to TypeScript sources through the `@jkomyno/source` export condition (mirroring the `customConditions` tsconfig setting), so running tests never requires building dependency packages first.
+- the `vitest` test engine, whose shared configuration is stored in [`vitest.config.base.ts`](./vitest.config.base.ts). Workspace imports in tests resolve to TypeScript sources through the `@samambaia/source` export condition (mirroring the `customConditions` tsconfig setting), so running tests never requires building dependency packages first.
 - opinionated formatting and linting setups via [`oxfmt`](https://oxc.rs/docs/guide/usage/formatter.html) and [`oxlint`](https://oxc.rs/docs/guide/usage/linter.html), whose configurations are defined in the [`.oxfmtrc.jsonc`](./.oxfmtrc.jsonc) and [`.oxlintrc.jsonc`](./.oxlintrc.jsonc) files. Type-aware checks through `oxlint-tsgolint` reject unsafe types and unhandled promises; lint warnings, unused code, focused or skipped tests, and unused disable comments also fail linting. [`Lefthook`](https://github.com/evilmartians/lefthook) runs the `lint-staged` checks before each commit.
 - [**Changesets**](https://github.com/changesets/changesets) for versioning and changelogs; the **Release** workflow opens a "Version Packages" PR when changesets land on `main`, and publishes to npm when that PR is merged using [npm trusted publishing (OIDC)](https://docs.npmjs.com/trusted-publishers)—no long-lived tokens. See [Publishing (OIDC)](#publishing-oidc) below.
 - [**pkg.pr.new**](https://pkg.pr.new) for continuous preview releases: each PR gets installable preview packages (install the [GitHub App](https://github.com/apps/pkg-pr-new) on the repo first).
@@ -149,10 +90,7 @@ Package test configurations use `vitest.config.mts` so Vite loads them as ESM wh
 
 ## 👤 Author
 
-Hi, I'm **Alberto Schiabel**, you can follow me on:
-
-- Github: [@jkomyno](https://github.com/jkomyno)
-- Twitter: [@jkomyno](https://twitter.com/jkomyno)
+**Samambaia** is maintained by its contributors.
 
 ## 🦄 Show your support
 
